@@ -1,7 +1,7 @@
 import HomeScreen from "@/components/screens/home/HomeScreen";
 import { createDrawerNavigator, DrawerContentComponentProps, DrawerContentScrollView } from "@react-navigation/drawer";
-import { useColorScheme } from "react-native";
-import { Drawer, PaperProvider, MD3DarkTheme, MD3LightTheme } from "react-native-paper";
+import { StyleSheet, useColorScheme } from "react-native";
+import { Drawer, MD3DarkTheme, MD3LightTheme, PaperProvider, Text } from "react-native-paper";
 
 export default function RootLayout() {
   const DrawerNav = createDrawerNavigator();
@@ -12,12 +12,14 @@ export default function RootLayout() {
     <PaperProvider>
       <DrawerNav.Navigator
         screenOptions={{
-          title: "Compiler Explorer",
-          headerTitleAlign: "center",
           headerStyle: {
             backgroundColor: theme.colors.surface,
             borderWidth: 0,
           },
+          headerTitle(_props) {
+            return <Text style={style.headerTitle}>Compiler Explorer</Text>;
+          },
+          headerTitleAlign: "center",
           headerTintColor: theme.colors.onSurface,
           drawerStyle: {
             backgroundColor: theme.colors.surface,
@@ -47,3 +49,10 @@ function CustomDrawerContent(props: DrawerContentComponentProps) {
     </DrawerContentScrollView>
   );
 }
+
+const style = StyleSheet.create({
+  headerTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+});
