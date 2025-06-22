@@ -39,7 +39,7 @@ export default function CustomDrawer(props: CustomDrawerContentProps) {
         <Drawer.Section key={sectionIndex}>
           {section.map((item, itemIndex) => (
             <Drawer.Item
-              key={itemIndex}
+              key={item.route}
               theme={theme}
               label={item.label}
               icon={item.icon}
