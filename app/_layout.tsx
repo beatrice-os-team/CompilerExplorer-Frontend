@@ -1,3 +1,4 @@
+import AboutScreen from "@/components/screens/about/AboutScreen";
 import HomeScreen from "@/components/screens/home/HomeScreen";
 import { createDrawerNavigator, DrawerContentComponentProps, DrawerContentScrollView } from "@react-navigation/drawer";
 import { StyleSheet, useColorScheme } from "react-native";
@@ -32,6 +33,7 @@ export default function RootLayout() {
         }}
       >
         <DrawerNav.Screen name="home" component={HomeScreen} />
+        <DrawerNav.Screen name="about" component={AboutScreen} />
       </DrawerNav.Navigator>
     </PaperProvider>
   );
@@ -44,6 +46,10 @@ function CustomDrawerContent(props: DrawerContentComponentProps) {
         <Drawer.Item
           label="Home"
           onPress={() => props.navigation.navigate("home")}
+        />
+        <Drawer.Item
+          label="About"
+          onPress={() => props.navigation.navigate("about")}
         />
       </Drawer.Section>
     </DrawerContentScrollView>
