@@ -47,6 +47,8 @@ function CustomDrawerContent(props: DrawerContentComponentProps) {
           label="Home"
           onPress={() => props.navigation.navigate("home")}
         />
+      </Drawer.Section>
+      <Drawer.Section>
         <Drawer.Item
           label="About"
           onPress={() => props.navigation.navigate("about")}
