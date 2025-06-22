@@ -48,28 +48,45 @@ type CustomDrawerContentProps = DrawerContentComponentProps & {
 function CustomDrawerContent(props: CustomDrawerContentProps) {
   const { theme } = props;
 
+  const itemList = [
+    [
+      {
+        label: "Home",
+        icon: ({ color, size }: { color: string, size: number }) => {
+          return <MaterialIcons name="home" color={color} size={size} />;
+        },
+        route: "home",
+      },
+    ], [
+      {
+        label: "About",
+        icon: ({ color, size }: { color: string, size: number }) => {
+          return <MaterialIcons name="info" color={color} size={size} />;
+        },
+        route: "about",
+      },
+    ],
+  ];
+
   return (
     <DrawerContentScrollView style={{
       backgroundColor: theme.colors.background,
       borderTopRightRadius: 15,
       borderBottomRightRadius: 15,
     }}>
-      <Drawer.Section>
-        <Drawer.Item
-          theme={theme}
-          icon={({ color, size }) => <MaterialIcons name="home" color={color} size={size} />}
-          label="Home"
-          onPress={() => props.navigation.navigate("home")}
-        />
-      </Drawer.Section>
-      <Drawer.Section>
-        <Drawer.Item
-          theme={theme}
-          icon={({ color, size }) => <MaterialIcons name="info" color={color} size={size} />}
-          label="About"
-          onPress={() => props.navigation.navigate("about")}
-        />
-      </Drawer.Section>
+      {itemList.map((section, sectionIndex) => (
+        <Drawer.Section key={sectionIndex}>
+          {section.map((item, itemIndex) => (
+            <Drawer.Item
+              key={itemIndex}
+              theme={theme}
+              label={item.label}
+              icon={item.icon}
+              onPress={() => props.navigation.navigate(item.route)}
+            />
+          ))}
+        </Drawer.Section>
+      ))}
     </DrawerContentScrollView>
   );
 }
