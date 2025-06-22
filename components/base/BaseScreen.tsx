@@ -8,11 +8,9 @@ type Props = PropsWithChildren<{
 
 export default function BaseScreen({ children, style }: Props) {
   return (
-    <PaperProvider>
-      <Surface style={[styles.container, style]}>
-        {children}
-      </Surface>
-    </PaperProvider>
+    <Surface style={[styles.container, style]}>
+      {children}
+    </Surface>
   );
 }
 
