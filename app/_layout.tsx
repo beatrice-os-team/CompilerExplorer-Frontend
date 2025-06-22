@@ -43,7 +43,7 @@ function CustomDrawerContent(props: DrawerContentComponentProps) {
       <Drawer.Section>
         <Drawer.Item
           label="Home"
-          onPress={() => props.navigation.navigate('Home')}
+          onPress={() => props.navigation.navigate('home')}
         />
       </Drawer.Section>
     </DrawerContentScrollView>
