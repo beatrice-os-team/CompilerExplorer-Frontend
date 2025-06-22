@@ -1,12 +1,19 @@
+import AboutScreen from "@/components/screens/about/AboutScreen";
 import HomeScreen from "@/components/screens/home/HomeScreen";
-import { createDrawerNavigator, DrawerContentComponentProps, DrawerContentScrollView } from "@react-navigation/drawer";
-import { StyleSheet, useColorScheme } from "react-native";
-import { Drawer, MD3DarkTheme, MD3LightTheme, PaperProvider, Text } from "react-native-paper";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { useColorScheme } from "react-native";
+import { MD3DarkTheme, MD3LightTheme, MD3Theme, PaperProvider } from "react-native-paper";
+import Title from "@/components/top-bar/Title";
+import CustomDrawer from "@/components/top-bar/CustomDrawer";
+import RightButtonRow from "@/components/top-bar/RightButtonRow";
+import { useState } from "react";
 
 export default function RootLayout() {
   const DrawerNav = createDrawerNavigator();
-  const colorScheme = useColorScheme();
-  const theme = colorScheme === "dark" ? MD3DarkTheme : MD3LightTheme;
+
+  const [theme, setTheme] = useState<MD3Theme>(
+    useColorScheme() === "dark" ? MD3DarkTheme : MD3LightTheme
+  );
 
   return (
     <PaperProvider>
@@ -16,43 +23,25 @@ export default function RootLayout() {
             backgroundColor: theme.colors.surface,
             borderWidth: 0,
           },
-          headerTitle(_props) {
-            return <Text style={styles.headerTitle}>Compiler Explorer</Text>;
-          },
+          headerTitle: () => <Title theme={theme} />,
           headerTitleAlign: "center",
           headerTintColor: theme.colors.onSurface,
-          drawerStyle: {
-            backgroundColor: theme.colors.surface,
-          },
+          headerRight: () => (
+            <RightButtonRow
+              theme={theme}
+              onColorSchemeToggle={() => {
+                setTheme(theme === MD3DarkTheme ? MD3LightTheme : MD3DarkTheme);
+              }}
+            />
+          ),
         }}
-        drawerContent={props => {
-          return (
-            <CustomDrawerContent {...props} />
-          )
+        drawerContent={(props) => {
+          return <CustomDrawer theme={theme} {...props} />;
         }}
       >
-        <DrawerNav.Screen name="home" component={HomeScreen} />
+        <DrawerNav.Screen name="home" component={() => <HomeScreen theme={theme} />} />
+        <DrawerNav.Screen name="about" component={() => <AboutScreen theme={theme} />} />
       </DrawerNav.Navigator>
     </PaperProvider>
   );
 }
-
-function CustomDrawerContent(props: DrawerContentComponentProps) {
-  return (
-    <DrawerContentScrollView {...props}>
-      <Drawer.Section>
-        <Drawer.Item
-          label="Home"
-          onPress={() => props.navigation.navigate("home")}
-        />
-      </Drawer.Section>
-    </DrawerContentScrollView>
-  );
-}
-
-const styles = StyleSheet.create({
-  headerTitle: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-});

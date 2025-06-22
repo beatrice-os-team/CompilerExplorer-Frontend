@@ -6,10 +6,10 @@ type Props = {
   theme: MD3Theme;
 }
 
-export default function HomeScreen({ theme }: Props) {
+export default function AboutScreen({ theme }: Props) {
   return (
     <BaseScreen theme={theme} style={styles.container}>
-      <Text>Home</Text>
+      <Text>About</Text>
     </BaseScreen>
   );
 }
