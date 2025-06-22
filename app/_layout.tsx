@@ -1,12 +1,12 @@
 import AboutScreen from "@/components/screens/about/AboutScreen";
 import HomeScreen from "@/components/screens/home/HomeScreen";
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import { useColorScheme } from "react-native";
-import { MD3DarkTheme, MD3LightTheme, MD3Theme, PaperProvider } from "react-native-paper";
-import Title from "@/components/top-bar/Title";
 import CustomDrawer from "@/components/top-bar/CustomDrawer";
 import RightButtonRow from "@/components/top-bar/RightButtonRow";
+import Title from "@/components/top-bar/Title";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import { useState } from "react";
+import { useColorScheme } from "react-native";
+import { MD3DarkTheme, MD3LightTheme, MD3Theme, PaperProvider } from "react-native-paper";
 
 export default function RootLayout() {
   const DrawerNav = createDrawerNavigator();
