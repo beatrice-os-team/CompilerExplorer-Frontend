@@ -1,6 +1,8 @@
 import BaseScreen from "@/components/base/BaseScreen";
-import { StyleSheet } from "react-native";
-import { MD3Theme, Text } from "react-native-paper";
+import { ScrollView, StyleSheet } from "react-native";
+import Markdown from "react-native-markdown-display";
+import { MD3Theme } from "react-native-paper";
+import { AboutMarkdown } from "@/constants/about/AboutMd";
 
 type Props = {
   theme: MD3Theme;
@@ -8,15 +10,20 @@ type Props = {
 
 export default function AboutScreen({ theme }: Props) {
   return (
-    <BaseScreen theme={theme} style={styles.container}>
-      <Text>About</Text>
+    <BaseScreen theme={theme}>
+      <ScrollView contentContainerStyle={styles.container}>
+        <Markdown style={{
+          body: { color: theme.colors.onSurface },
+        }}>
+          {AboutMarkdown}
+        </Markdown>
+      </ScrollView>
     </BaseScreen>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center",
-    justifyContent: "center",
+    padding: 25,
   },
 });
