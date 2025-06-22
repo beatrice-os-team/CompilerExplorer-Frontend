@@ -1,17 +1,49 @@
-import { Appbar, PaperProvider } from "react-native-paper";
-import { Stack } from "expo-router";
+import HomeScreen from "@/components/screens/home/HomeScreen";
+import { createDrawerNavigator, DrawerContentComponentProps, DrawerContentScrollView } from "@react-navigation/drawer";
+import { useColorScheme } from "react-native";
+import { Drawer, PaperProvider, MD3DarkTheme, MD3LightTheme } from "react-native-paper";
 
 export default function RootLayout() {
+  const DrawerNav = createDrawerNavigator();
+  const colorScheme = useColorScheme();
+  const theme = colorScheme === "dark" ? MD3DarkTheme : MD3LightTheme;
+
   return (
     <PaperProvider>
-      <Appbar.Header>
-        <Appbar.Action icon="menu" onPress={() => {}} />
-        <Appbar.Content
-          title="Compiler Explorer"
-          titleStyle={{ alignSelf: "center" }}
-        />
-      </Appbar.Header>
-      <Stack screenOptions={{ headerShown: false }} />
+      <DrawerNav.Navigator
+        screenOptions={{
+          title: "Compiler Explorer",
+          headerTitleAlign: "center",
+          headerStyle: {
+            backgroundColor: theme.colors.surface,
+            borderWidth: 0,
+          },
+          headerTintColor: theme.colors.onSurface,
+          drawerStyle: {
+            backgroundColor: theme.colors.surface,
+          },
+        }}
+        drawerContent={props => {
+          return (
+            <CustomDrawerContent {...props} />
+          )
+        }}
+      >
+        <DrawerNav.Screen name="home" component={HomeScreen} />
+      </DrawerNav.Navigator>
     </PaperProvider>
+  );
+}
+
+function CustomDrawerContent(props: DrawerContentComponentProps) {
+  return (
+    <DrawerContentScrollView {...props}>
+      <Drawer.Section>
+        <Drawer.Item
+          label="Home"
+          onPress={() => props.navigation.navigate('Home')}
+        />
+      </Drawer.Section>
+    </DrawerContentScrollView>
   );
 }
