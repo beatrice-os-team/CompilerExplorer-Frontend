@@ -17,7 +17,7 @@ export default function RootLayout() {
             borderWidth: 0,
           },
           headerTitle(_props) {
-            return <Text style={style.headerTitle}>Compiler Explorer</Text>;
+            return <Text style={styles.headerTitle}>Compiler Explorer</Text>;
           },
           headerTitleAlign: "center",
           headerTintColor: theme.colors.onSurface,
@@ -50,7 +50,7 @@ function CustomDrawerContent(props: DrawerContentComponentProps) {
   );
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 20,
     fontWeight: "bold",
