@@ -1,10 +1,14 @@
 import BaseScreen from "@/components/base/BaseScreen";
 import { StyleSheet } from "react-native";
-import { Text } from "react-native-paper";
+import { MD3Theme, Text } from "react-native-paper";
 
-export default function HomeScreen() {
+type Props = {
+  theme: MD3Theme;
+}
+
+export default function HomeScreen({ theme }: Props) {
   return (
-    <BaseScreen style={styles.container}>
+    <BaseScreen theme={theme} style={styles.container}>
       <Text>Home</Text>
     </BaseScreen>
   );
