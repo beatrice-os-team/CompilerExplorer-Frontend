@@ -16,7 +16,7 @@ export default function CustomDrawer(props: CustomDrawerContentProps) {
         icon: ({ color, size }: { color: string, size: number }) => {
           return <MaterialIcons name="home" color={color} size={size} />;
         },
-        route: "home",
+        route: "index",
       },
     ], [
       {

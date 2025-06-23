@@ -39,7 +39,7 @@ export default function RootLayout() {
           return <CustomDrawer theme={theme} {...props} />;
         }}
       >
-        <DrawerNav.Screen name="home" component={() => <HomeScreen theme={theme} />} />
+        <DrawerNav.Screen name="index" component={() => <HomeScreen theme={theme} />} />
         <DrawerNav.Screen name="about" component={() => <AboutScreen theme={theme} />} />
       </DrawerNav.Navigator>
     </PaperProvider>
