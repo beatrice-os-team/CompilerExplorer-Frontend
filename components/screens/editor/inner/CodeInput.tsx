@@ -8,9 +8,9 @@ type Props = {
 
 export default function CodeInput({ exampleCode, onChangeCode }: Props) {
   return (
-    <View style={style.container}>
+    <View style={styles.container}>
       <TextInput
-        style={style.textInput}
+        style={styles.textInput}
         value={exampleCode}
         onChangeText={onChangeCode}
         mode="outlined"
@@ -24,7 +24,7 @@ export default function CodeInput({ exampleCode, onChangeCode }: Props) {
   );
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
