@@ -20,6 +20,14 @@ export default function CustomDrawer(props: CustomDrawerContentProps) {
       },
     ], [
       {
+        label: "Editor",
+        icon: ({ color, size }: { color: string, size: number }) => {
+          return <MaterialIcons name="code" color={color} size={size} />;
+        },
+        route: "editor",
+      },
+    ], [
+      {
         label: "About",
         icon: ({ color, size }: { color: string, size: number }) => {
           return <MaterialIcons name="info" color={color} size={size} />;
