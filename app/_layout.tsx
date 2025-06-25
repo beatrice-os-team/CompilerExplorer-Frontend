@@ -1,4 +1,5 @@
 import AboutScreen from "@/components/screens/about/AboutScreen";
+import EditorScreen from "@/components/screens/editor/EditorScreen";
 import HomeScreen from "@/components/screens/home/HomeScreen";
 import CustomDrawer from "@/components/top-bar/CustomDrawer";
 import RightButtonRow from "@/components/top-bar/RightButtonRow";
@@ -41,6 +42,7 @@ export default function RootLayout() {
       >
         <DrawerNav.Screen name="index" component={() => <HomeScreen theme={theme} />} />
         <DrawerNav.Screen name="about" component={() => <AboutScreen theme={theme} />} />
+        <DrawerNav.Screen name="editor" component={() => <EditorScreen theme={theme} />} />
       </DrawerNav.Navigator>
     </PaperProvider>
   );
