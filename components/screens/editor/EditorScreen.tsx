@@ -1,6 +1,8 @@
 import BaseScreen from "@/components/base/BaseScreen";
 import { StyleSheet, View } from "react-native";
-import { MD3Theme, Text } from "react-native-paper";
+import { MD3Theme } from "react-native-paper";
+import CodeInput from "./inner/CodeInput";
+import CodeOutput from "./inner/CodeOutput";
 
 type Props = {
   theme: MD3Theme;
@@ -10,10 +12,10 @@ export default function EditorScreen({ theme }: Props) {
   return (
     <BaseScreen theme={theme} style={styles.container}>
       <View style={styles.leftArea}>
-        <Text>Left</Text>
+        <CodeInput />
       </View>
       <View style={styles.rightArea}>
-        <Text>Right</Text>
+        <CodeOutput />
       </View>
     </BaseScreen>
   );
