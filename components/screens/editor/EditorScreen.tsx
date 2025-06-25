@@ -1,4 +1,5 @@
 import BaseScreen from "@/components/base/BaseScreen";
+import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { MD3Theme } from "react-native-paper";
 import CodeInput from "./inner/CodeInput";
@@ -9,10 +10,16 @@ type Props = {
 };
 
 export default function EditorScreen({ theme }: Props) {
+  const exampleCode = "print('Hello, world!')";
+  const [code, setCode] = useState(exampleCode);
+
   return (
     <BaseScreen theme={theme} style={styles.container}>
       <View style={styles.leftArea}>
-        <CodeInput />
+        <CodeInput
+          exampleCode={exampleCode}
+          onChangeCode={setCode}
+        />
       </View>
       <View style={styles.rightArea}>
         <CodeOutput />

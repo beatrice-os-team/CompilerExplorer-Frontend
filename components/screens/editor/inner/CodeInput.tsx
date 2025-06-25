@@ -1,11 +1,18 @@
 import { StyleSheet, View } from "react-native";
 import { TextInput } from "react-native-paper";
 
-export default function CodeInput() {
+type Props = {
+  exampleCode: string;
+  onChangeCode: (code: string) => void;
+};
+
+export default function CodeInput({ exampleCode, onChangeCode }: Props) {
   return (
     <View style={style.container}>
       <TextInput
         style={style.textInput}
+        value={exampleCode}
+        onChangeText={onChangeCode}
         mode="outlined"
         label="Source Code"
         placeholder="Enter your code here"
