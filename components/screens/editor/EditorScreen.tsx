@@ -22,7 +22,10 @@ export default function EditorScreen({ theme }: Props) {
         />
       </View>
       <View style={styles.rightArea}>
-        <CodeOutput />
+        <CodeOutput
+          theme={theme}
+          output={code}
+        />
       </View>
     </BaseScreen>
   );
