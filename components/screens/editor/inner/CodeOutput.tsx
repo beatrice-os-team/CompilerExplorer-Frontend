@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { MD3Theme, Text } from "react-native-paper";
 
 type Props = {
@@ -12,7 +12,9 @@ export default function CodeOutput({ theme, output }: Props) {
 
   return (
     <View style={[styles.container, { borderColor, backgroundColor }]}>
-      <Text style={styles.text}>{output}</Text>
+      <ScrollView>
+        <Text style={styles.text}>{output}</Text>
+      </ScrollView>
     </View>
   );
 }
