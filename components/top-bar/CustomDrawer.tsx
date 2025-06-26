@@ -1,4 +1,4 @@
-import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import { DrawerContentComponentProps, DrawerContentScrollView } from "@react-navigation/drawer";
 import { Drawer, MD3Theme } from "react-native-paper";
 
@@ -25,6 +25,13 @@ export default function CustomDrawer(props: CustomDrawerContentProps) {
           return <MaterialIcons name="code" color={color} size={size} />;
         },
         route: "editor",
+      },
+      {
+        label: "Components",
+        icon: ({ color, size }: { color: string, size: number }) => {
+          return <MaterialCommunityIcons name="emoticon-happy" size={size} color={color} />;
+        },
+        route: "components",
       },
     ], [
       {
